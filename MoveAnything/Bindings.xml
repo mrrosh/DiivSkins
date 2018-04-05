@@ -1,0 +1,5 @@
+<Bindings>
+	<Binding name="Refresh MoveAnything! Positions" header="MOVEANYTHING">
+		MoveAnything_RefreshPositions();
+	</Binding>
+</Bindings>

@@ -1,0 +1,127 @@
+DiivSkins v2.0
+"Putting the art back into the World of Warcraft Custom UI"
+
+I found I am fond of the graphical elements of the default UI, and wanted the ability to preserve as much of their style and flavor as possible while still being able to have maximum flexibility in the design of my interface layouts. To that end, DiivSkins attaches itself to the MoveAnything! AddOn, and paints "skins" back onto many of the separated mainbar elements, as well as blizzards default extra bars, if they are used.
+
+Required Dependency: MoveAnything! by Skrag
+(this AddOn is supplied with the Download. PLEASE read the "ATTENTION" warning below in the installation instructions)
+
+Optional Dependency: FlexBar ( highly recommended )
+Download FlexBar HERE .
+(if you are new to FlexBar, I posted a pseudo tutorial at the top of page 4 (cicky) in that thread, check that out to get you started)
+
+*please note version changes below, thank you.
+
+
+
+
+
+What DiivSkins Will Do:
+DiivSkins will "paint" auxiliary images onto the two dimensional pane of your user interface that overlays the three dimensional game world.
+
+What DiivSkins Won't Do:
+DiivSkins will not give you any extra action buttons. It merely creates a visual backdrop for you to place buttons on from a different source, such as FlexBar. You will need to download this AddOn separately if you wish to augment your Interface with more than the default action button slots provided by Blizzard's main action bar, bottom bars, and side bars.
+
+
+
+
+
+What all does DiivSkins Include?
+Diivskin supplies the user with a number of unique graphical elements to customize their iinterface layout, or even rebuild much of it from scratch:
+
+    * [10] vertical Flexbar backdrop "trays" configurable from 1-12 "slots"
+
+    * [10] horizontal "trays" also configurable from 1-12 "slots"
+
+    * [10] individual frames with an assortment of selectable endcap renderings
+
+    * (10) additional frames with selectable "bits", assorted auxiliary images to finsih off your custom layout
+
+
+The 40 items above are configured in game with slider menus via a control console accessed from the main Game Menu. Effectively, there are 20 button trays, each configurable from 1-12 slots, and 20 additional frame elements, each also configurable to reference 30+ different images. So, there are a LOT of options at your fingertips. All elements can also be 'hidden" (rendered transparent) using the slider functionality.
+
+It's important to note that most of the "work" here is done by the MoveAnything! AddOn, and thus its requirement as a dependency. Diivskins is relatively simple in and of itself. To the same end, FlexBar is highly recommended to make use of the otherwise superfluous button "trays". Thanks to MoveAnything!, all unique DiivSkins elements, as well as most "anything" else in your UI, is moveable and scalable.
+
+
+To Install this AddOn:
+There are 2 primary directories included in this download.
+
+    * DiivSkins
+
+    * MoveAnything!
+      There is only one file altered from the original in the supplied MoveAnything! folder. ( MAPredefinedFrames.lua )
+      This file has been modified to allow MoveAnything! to recognize the various DiivSkin elements.
+
+ATTENTION:
+If you update MoveAnything! seperately from DiivSkins, You MUST install the altered MoveAnything file supplied with DiivSkins AFTER you have installed the the MoveAnything AddOn. Otherwise, you will overwrite the additional data, and WILL NOT be able to move or resize any of the DiivSkin Elements.
+
+Extract the above files from the downloaded .zip, and install them (as needed) into your (by default):
+
+C: \ Program Files \ World of Warcraft \ Interface \ AddOns directory
+
+
+
+
+Known Issues:
+
+    * Experience Bar and associated texture need to be scaled independently. I'm sure there is a simple way around this, but it escapes me. If you have a solution, please share, thank you.
+
+    * Occasionally during configuration, items that have been checked [hide] in the MoveAnything! configuration console do not un-hide properly. I believe this is function of trying to use this functionality for more frequent access than was intended. Reloading the UI fixes the issue, and they do not persist post set-up. Actual game-play appears to be without issue.
+
+    * The "tips" portion of the DiivSkin Console is "Under Construction". I am waiting for user feedback before making a decision to complete, expand, or delete this section. 
+
+A Note on Scaling:
+DiivSkins "trays" are engineered to work with default action button sizes. In flexbar terms, that means a "scale=10". Additionally, The new trays in 2.0 have the default blizzard padding, in flexbar terms, this means "padding=4" They can be resized of course, using MoveAnything!, but I would strongly recommend setting your global UI scale so that you are comfortable with the majority of your action button's sizes with a flexbar scale of 10. (This is the flexbar default as well). You can then subsequently rescale UI elements to taste using MoveAnything's functionality.
+
+
+
+
+
+
+Many Thanks to:
+
+Skrag for MoveAnything!, the brains behind DiivSkins' fluff.
+
+Dhargo for Flexbar, and for making said fluff less fluffy.
+
+Sheid, Telo, and Mondinga for your nicely commented code that has helped me learn a great deal.
+
+SAM for Squid Mod , I think this AddOn is the seed that fostered DiivSkins. Anyone looking for some alternatives to the "griffons", I highly suggest reviewing this AddOn. Some very nice artwork available there.
+
+Blizzard's Art Team. Whomever you are. I'm a cutting and pasting fool, and you have provided me with better ammunition than I could have ever hoped for.
+
+Thank you Gello, Kaelten, and especially Beladona from www.WoWInterface.com for all your assistance and guidance with my noobie questions. I have much yet to learn, but I couldn't have come this far without you. Thank you also Cairenn for general support and for administering this great site.
+
+DiivSkins is 100% open source. If you actually find something of mine in this AddOn that you would like use elsewhere, please, by all means feel free.
+
+
+
+
+
+
+Changes:
+v2.0 -- Code rewrite from the ground up.
+
+    * Updating from the 1.X versions of this AddOn will erase your current Inteface Layout.
+      I know I said I wouldn't do this again, and again, I am very very sorry. 
+
+    * DiivSkins control console implemented. Original set-up process and future adjustments should be MUCH easier to execute now.
+
+    * New XML file, ( DiivSkinEggs.xml ) included for making custom changes without fear of my altering that file in future updates.
+
+    * Primary download no loner includes "egg" texture files. Back up what you have if you were using these.
+
+
+v1.2 -- Toc update.
+
+    * Minor changes to make AddOn more user-friendly on first use.
+
+
+v1.1 -- Cleaned up the XML.
+
+    * Changed a number of xml Frame references
+
+    * Made correlating adjustments to the MAPredefinedFrames.lua for the MoveAnything! AddOn.
+
+
+v1.0 -- Initial release version

@@ -1,0 +1,92 @@
+I fielded a few questions from flexbar first timers in the last thread, so I am documenting a pseudo tutorial I posted earlier here. While it can seem intimidating, Flexbar is honestly only as complicated as you make it....
+
+Here is a brief walk through to get first time Flexbar folks a kick start for setting up their DiivSkin layout:
+
+
+
+First, set your Global UI Scale from the Blizzard options such that the majority of your buttons backdrops are sized how you want them to be without resizing them with the MoveAnything! AddOn.
+
+Now, once you have instaledl flexbar, and after you have got the bulk of your DiivSkin trays set up where you want them, type the following lines into your chat entry and hit [Enter]: (you can probably cut and paste these right into the chat entry if you like)
+
+First type:
+/flexbar show button=120
+This makes all the buttons visible on screen. (FlexBar gives you 120 of them, you don't have to use them all.)
+
+Now type:
+/flexbar unlock button=1-120
+Unlock the buttons for movement.
+(flexbar buttons should be like this by default on a new install, but this will "unlock" them, to be safe. An unlocked FlexBar button will have a little grey "foot" at its upper right corner that you can grab and move the button with.)
+
+Now type:
+/flexbar text button=1-120 text='%d'
+This is a command to display text on a Flexbutton. There are several, but this one is particulary handy for configuration purposes.
+(those are apostrophe's around the %d, and they're important.) This tells FlexBar to display it's button ID's for each button.
+(TIP: These numbers also correspond to a HUGE new list of keybindings for you in Blizzard's keybinding interface. "Hidden" buttons respond to keybinds, so if you have a common action (fishing or your mount for example) you would like bound to keypress, you can place the appropriate skill on a button, bind it, hide it, and then forget about it.)
+
+Now type:
+/flexbar group button=1-12 anchor=12
+This is how you make a flexbar group. There should be a little "foot" in the top left corner of button number 13 that you can move the group as a whole with.
+
+Now type:
+/flexbar verticalgroup group=1 padding=4
+This command reassigns the arrangement of the group, and tells it to give a spacing (padding) between each button of 4 pixels.
+(This should "match" a row of DiivSkin button texture backdrops, if you haven't resized them.)
+
+
+Now type:
+/flexbar horizontalgroup group=1 height=2 padding=4
+That should make a 6x2 grid of buttons, 4 pixels apart. I wouldn't necessarily use those for DiivSkin trays, but it shows you the other configuration command. For "verticalgroup" swap in "height" for "width".
+(TIP: reverse the logical command for making a "horizontal" or "vertical" group. In the above example, type: /flexbar verticalgroup group=1 width=6 padding=4 instead. What this will do is keep your button ID's along the same axis as the group you are constructing. A little convoluted, I know, but that's the way flexbar works, and you get used to it pretty quickly.)
+
+Now type:
+/flexbar horizontalgroup group=1 padding=4
+Now you should have a nice row of buttons like your old action bar page 1, that will lay down in a DiivSkin Tray
+
+Now type:
+/flexbar hide button=13-120
+The opposite of /flexbar show.
+
+Now type:
+/flexbar text button=1-120 text=''
+(just two apostrophe's at the end there, with nothing in them)
+That takes the buttons back to a "clean" state.
+
+
+Now type:
+/flexbar lock button=1-120
+That takes away the moving "feet" so you cant accidentally move a button after you get it where you want it.
+
+If you make a accidentally make a group that you didn't intend to, just type:
+/flexbar ungroup group=1
+(TIP: Keep track of your groups. Sometimes you can inadvertantly overlap them and get some odd results. /flexbar listgroups will give you a list of all your current groups in the chat window. )
+
+
+
+
+That should suffice for a quick and dirty "how do I?" for FlexBar beginners.
+
+Obviously, FlexBar can do a LOT more. There are literally PAGES of documentation on it, but, that should help you get started. Just swap in whatever button numbers you want for whatever "/flexbar yada yada" you are doing. Also, instead of "button=13-24" you can type: "button=[13 14 15]". That's useful if you want to group up or control buttons that aren't in numerical sequence.
+
+I'm going to give you one more, but use it with caution, as its not easy to get the DiivSkin textures to line up "just right" after you do this...
+
+Type:
+/flexbar scale button=12 scale=15
+The "base" scale is 10. no matter what you do with the UI Scaler in Blizard's [Video Options], a default button is 10. So, you just made a button 50% larger than normal. Like I said, you can scale up a diivskin texture for bigger buttons than your "norm" but it can be tricky to get them to line up just right after you do. It's almost easier to place them one at a time at that point, rather than in flexgroups.
+to get your button back to normal, just type:
+/flexbar scale button=12 scale=10
+
+I hope that takes some of the thunder out of the flexbar "intimidation factor". For just arranging buttons, its really pretty simple once you get the gist of it.
+
+as a final note, here are a couple of FlexBar "configuration" macro's you might find helpful:
+
+"CONFIG" :
+/flexbar unlock button=1-120
+/flexbar text button=1-120 text='%d'
+/flexbar showgrid button=1-120
+
+"PLAY":
+/flexbar lock button=1-120
+/flexbar text button=1-120 text=''
+/flexbar hidegrid button=1-120
+
+The first two commands you should be familiar with. The last command, "hidegrid" makes your FlexButton slots invisible unless you are dragging a skill Icon. That's an optional feature, but one more flexbar treat, as long as we're learning new things here. :)
