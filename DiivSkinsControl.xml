@@ -1,0 +1,1917 @@
+<!--	DiivSkins v2.0
+	diiverr818@yahoo.com  --> 
+
+<!-- The following tells the xml parser what schema to use - don't change it -->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+
+<Script file="DiivSkinsControl.lua"/>
+
+<Frame name="DS_MainEventFrame" >
+	<Size>
+		<AbsDimension x="10" y="10"/>
+	</Size>
+	<Anchors>
+		<Anchor point="CENTER"/>
+	</Anchors>
+	<Scripts>
+		<OnLoad>
+			this:RegisterEvent("VARIABLES_LOADED");
+		</OnLoad>
+		<OnEvent>
+			DS_MainOnEvent();
+		</OnEvent>
+	</Scripts>
+</Frame>
+
+<!-- BUTTON TEMPLATE. Smaller font than the normal game menu button.
+     Blizzard probably has one, but I was too lazy to look for it -->
+
+<Button name="DS_SmallFontButtonTemplate" inherits="UIPanelButtonTemplate" virtual="true">
+	<Size>
+		<AbsDimension x="144" y="21"/>
+	</Size>
+	<NormalText inherits="GameFontHighlightSmall"/>
+	<DisabledText inherits="GameFontDisableSmall"/>
+	<HighlightText inherits="GameFontHighlightSmall"/>
+</Button>
+
+<!-- START the "control console"  -->
+<Frame name="DS_ControlConsole" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+	<TitleRegion setAllPoints="true"/>
+	<Size>
+		<AbsDimension x="202" y="48"/>
+	</Size>
+	<Anchors>
+		<Anchor point="TOPLEFT">
+			<Offset>
+				<AbsDimension x="-45" y="-110"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DS_ControlConsoleHeader" file="Interface\DialogFrame\UI-DialogBox-Header">
+				<Size>
+					<AbsDimension x="202" y="48"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER"/>
+				</Anchors>
+			</Texture>
+			<FontString inherits="GameFontHighlightSmall" text="DiivSkins v2.0">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="DS_ControlConsoleHeader">
+						<Offset>
+							<AbsDimension x="0" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+	</Layers>
+	<Frames>
+<!-- START primary console buttons -->
+		<Frame name="DS_ControlBackMain" >
+			<Size>
+				<AbsDimension x="512" y="128"/>
+			</Size>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture file="Interface\AddOns\DiivSkins\Skins\ControlSkins\controlback"/>
+				</Layer>
+			</Layers>
+			<Anchors>
+				<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="DS_ControlConsole">
+					<Offset>
+						<AbsDimension x="218" y="78"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Frame>
+		<Button name="DS_BarsToggleButton" inherits="DS_SmallFontButtonTemplate" text="Trays">
+			<Size>
+				<AbsDimension x="42" y="19"/>
+			</Size>
+			<Anchors>
+				<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="DS_ControlBackMain">
+					<Offset>
+						<AbsDimension x="71" y="46"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					DS_BarsToggle();
+					DS_MinimizeToggle();
+				</OnClick>
+			</Scripts>
+		</Button>
+		<Button name="DS_EndCapsToggleButton" inherits="DS_SmallFontButtonTemplate" text="Caps">
+			<Size>
+				<AbsDimension x="42" y="19"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DS_BarsToggleButton" relativePoint="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					DS_EndCapsToggle();
+					DS_MinimizeToggle();
+				</OnClick>
+			</Scripts>
+		</Button>
+		<Button name="DS_MiscBitsToggleButton" inherits="DS_SmallFontButtonTemplate" text="Bits">
+			<Size>
+				<AbsDimension x="42" y="19"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DS_EndCapsToggleButton" relativePoint="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					DS_MiscBitsToggle();
+					DS_MinimizeToggle();
+				</OnClick>
+			</Scripts>
+		</Button>
+		<Button name="DS_MoveAnything_Button" inherits="DS_SmallFontButtonTemplate" text="MoveAny!">
+			<Size>
+				<AbsDimension x="72" y="19"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPRIGHT" relativeTo="DS_ControlBackMain" relativePoint="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="-100" y="-63"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					DS_MAOptionsToggle();
+				</OnClick>
+			</Scripts>
+		</Button>
+		<Button name="DS_ReloadUIButton" inherits="DS_SmallFontButtonTemplate" text="Reload UI">
+			<Size>
+				<AbsDimension x="72" y="19"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPRIGHT" relativeTo="DS_ControlBackMain" relativePoint="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="-28" y="-63"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					ReloadUI();
+				</OnClick>
+				<OnEnter>
+				</OnEnter>
+				<OnLeave>
+				</OnLeave>
+			</Scripts>
+		</Button>
+		<Button name="DS_ControlMinimizeButton">
+			<Size>
+				<AbsDimension x="27" y="27"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPRIGHT" relativeTo="DS_ControlBackMain" relativePoint="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="-2" y="-60"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					DS_Page1:Hide();
+					DS_Page2:Hide();
+					DS_Page3:Hide();
+					DS_Page10:Hide();
+					DS_Startup:Hide();
+					DS_CreditsPage:Hide();
+					DS_MinimizeToggle();
+					PlaySound("igMiniMapClose");
+				</OnClick>
+			</Scripts>
+			<NormalTexture file="Interface\AddOns\DiivSkins\Skins\ControlSkins\buttons">
+				<TexCoords left="0" right="0.25" top="0" bottom="0.5"/>
+			</NormalTexture>
+			<PushedTexture file="Interface\AddOns\DiivSkins\Skins\ControlSkins\buttons">
+				<TexCoords left="0" right="0.25" top="0.5" bottom="1.0"/>
+			</PushedTexture>
+			<HighlightTexture alphaMode="ADD" file="Interface\AddOns\DiivSkins\Skins\ControlSkins\buttons">
+				<TexCoords left="0.75" right="1.0" top="0.5" bottom="1.0"/>
+			</HighlightTexture>
+		</Button>
+<!-- The buttons above and below this comment swap places as needed when DS_MinimizeToggle is called -->
+		<Button name="DS_ControlCloseButton">
+			<Size>
+				<AbsDimension x="27" y="27"/>
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER" relativeTo="DS_ControlMinimizeButton"/>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					DS_ControlConsole:Hide();
+					PlaySound("igMiniMapClose");
+				</OnClick>
+			</Scripts>
+			<NormalTexture file="Interface\AddOns\DiivSkins\Skins\ControlSkins\buttons">
+				<TexCoords left="0.5" right="0.75" top="0" bottom="0.5"/>
+			</NormalTexture>
+			<PushedTexture file="Interface\AddOns\DiivSkins\Skins\ControlSkins\buttons">
+				<TexCoords left="0.5" right="0.75" top="0.5" bottom="1.0"/>
+			</PushedTexture>
+			<HighlightTexture alphaMode="ADD" file="Interface\AddOns\DiivSkins\Skins\ControlSkins\buttons">
+				<TexCoords left="0.75" right="1.0" top="0" bottom="0.5"/>
+			</HighlightTexture>
+		</Button>
+	</Frames>
+</Frame>
+<!-- END frame for Control Console -->
+
+<!-- START page one  -->
+<Frame name="DS_Page1" parent="UIParent" hidden= "true" >
+	<Size>
+		<AbsDimension x="512" y="512"/>
+	</Size>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture file="Interface\AddOns\DiivSkins\Skins\ControlSkins\startup2"/>
+			<FontString inherits="GameFontHighlight" text="Horizontal and Vertical Trays">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-50"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<!--
+			<FontString inherits="GameFontHighlightSmall" text="These can serve as backdrops for auxiliary action buttons,">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-70"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString inherits="GameFontHighlightSmall" text="such as the default extra bars, or from AddOns such as FlexBar.">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-85"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			-->
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOP" relativeTo="DS_ControlBackMain" relativePoint="BOTTOM">
+			<Offset>
+				<AbsDimension x="0" y="80"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Frames>
+		<Slider name="DiivSkins_hbar1Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset>
+						<AbsDimension x="35" y="-80"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Horizontal Bar 1");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["hbar1"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["hbar1"] = this:GetValue();
+						DS_TextureUpdate("hbar1");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_hbar2Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_hbar1Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Horizontal Bar 2");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["hbar2"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["hbar2"] = this:GetValue();
+						DS_TextureUpdate("hbar2");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_hbar3Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_hbar2Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Horizontal Bar 3");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["hbar3"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["hbar3"] = this:GetValue();
+						DS_TextureUpdate("hbar3");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_hbar4Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_hbar3Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Horizontal Bar 4");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["hbar4"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["hbar4"] = this:GetValue();
+						DS_TextureUpdate("hbar4");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_hbar5Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_hbar4Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Horizontal Bar 5");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["hbar5"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["hbar5"] = this:GetValue();
+						DS_TextureUpdate("hbar5");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_hbar6Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_hbar5Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Horizontal Bar 6");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["hbar6"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["hbar6"] = this:GetValue();
+						DS_TextureUpdate("hbar6");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_hbar7Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_hbar6Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Horizontal Bar 7");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["hbar7"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["hbar7"] = this:GetValue();
+						DS_TextureUpdate("hbar7");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_hbar8Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_hbar7Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Horizontal Bar 8");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["hbar8"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["hbar8"] = this:GetValue();
+						DS_TextureUpdate("hbar8");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_hbar9Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_hbar8Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Horizontal Bar 9");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["hbar9"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["hbar9"] = this:GetValue();
+						DS_TextureUpdate("hbar9");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_hbar10Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_hbar9Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Horizontal Bar 10");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["hbar10"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["hbar10"] = this:GetValue();
+						DS_TextureUpdate("hbar10");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+<!-- START Vertical Sliders  -->
+		<Slider name="DiivSkins_vbar1Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_hbar1Slider" relativePoint="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="65" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Vertical Bar 1");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["vbar1"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["vbar1"] = this:GetValue();
+						DS_VBarTextureUpdate("vbar1");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_vbar2Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_vbar1Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Vertical Bar 2");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["vbar2"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["vbar2"] = this:GetValue();
+						DS_VBarTextureUpdate("vbar2");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_vbar3Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_vbar2Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Vertical Bar 3");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["vbar3"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["vbar3"] = this:GetValue();
+						DS_VBarTextureUpdate("vbar3");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_vbar4Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_vbar3Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Vertical Bar 4");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["vbar4"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["vbar4"] = this:GetValue();
+						DS_VBarTextureUpdate("vbar4");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_vbar5Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_vbar4Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Vertical Bar 5");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["vbar5"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["vbar5"] = this:GetValue();
+						DS_VBarTextureUpdate("vbar5");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_vbar6Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_vbar5Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Vertical Bar 6");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["vbar6"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["vbar6"] = this:GetValue();
+						DS_VBarTextureUpdate("vbar6");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_vbar7Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_vbar6Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Vertical Bar 7");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["vbar7"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["vbar7"] = this:GetValue();
+						DS_VBarTextureUpdate("vbar7");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_vbar8Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_vbar7Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Vertical Bar 8");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["vbar8"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["vbar8"] = this:GetValue();
+						DS_VBarTextureUpdate("vbar8");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_vbar9Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_vbar8Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Vertical Bar 9");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["vbar9"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["vbar9"] = this:GetValue();
+						DS_VBarTextureUpdate("vbar9");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_vbar10Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="12" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="170" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_vbar9Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Vertical Bar 10");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["vbar10"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["vbar10"] = this:GetValue();
+						DS_VBarTextureUpdate("vbar10");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Button name="DS_Page1IntroButton" inherits="DS_SmallFontButtonTemplate" text= "intro" >
+			<Size>
+				<AbsDimension x="54" y="19"/>
+			</Size>
+			<Anchors>
+				<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="16" y="9"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					PlaySound("igMainMenuContinue");
+					DS_Page1:Hide();
+					DS_Startup:Show();
+				</OnClick>
+			</Scripts>
+		</Button>
+		<Button name="DS_Page1TipsButton" inherits="DS_SmallFontButtonTemplate" text="Tips">
+			<Size>
+				<AbsDimension x="54" y="19"/>
+			</Size>
+			<Anchors>
+				<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+					<Offset>
+						<AbsDimension x="-9" y="9"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					PlaySound("igMainMenuContinue");
+					DS_Page1:Hide();
+					DS_Page10:Show();
+				</OnClick>
+			</Scripts>
+		</Button>
+	</Frames>
+</Frame>
+<!-- START page two  -->
+<Frame name="DS_Page2" parent="UIParent" hidden="true" >
+	<Size>
+		<AbsDimension x="512" y="512"/>
+	</Size>
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture file="Interface\AddOns\DiivSkins\Skins\ControlSkins\startup2"/>
+			<FontString inherits="GameFontHighlight" text="End Caps">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-50"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<!--
+			<FontString inherits="GameFontHighlightSmall" text="These are extra endcaps for the horizontal button tray backdrops,">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-70"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString inherits="GameFontHighlightSmall" text="(TIP: shift+rightclick a moving frame to hide the overlay for easier positioning.)">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-85"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			-->
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOP" relativeTo="DS_ControlBackMain" relativePoint="BOTTOM">
+			<Offset>
+				<AbsDimension x="0" y="80"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Frames>
+		<Slider name="DiivSkins_endcap1Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="32" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOP">
+					<Offset>
+						<AbsDimension x="0" y="-80"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("End Cap 1");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["endcap1"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["endcap1"] = this:GetValue();
+						DS_CapTextureUpdate("endcap1");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_endcap2Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="32" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_endcap1Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("End Cap 2");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["endcap2"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["endcap2"] = this:GetValue();
+						DS_CapTextureUpdate("endcap2");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_endcap3Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="32" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_endcap2Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("End Cap 3");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["endcap3"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["endcap3"] = this:GetValue();
+						DS_CapTextureUpdate("endcap3");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_endcap4Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="32" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_endcap3Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("End Cap 4");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["endcap4"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["endcap4"] = this:GetValue();
+						DS_CapTextureUpdate("endcap4");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_endcap5Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="32" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_endcap4Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("End Cap 5");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["endcap5"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["endcap5"] = this:GetValue();
+						DS_CapTextureUpdate("endcap5");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_endcap6Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="32" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_endcap5Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("End Cap 6");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["endcap6"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["endcap6"] = this:GetValue();
+						DS_CapTextureUpdate("endcap6");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_endcap7Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="32" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_endcap6Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("End Cap 7");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["endcap7"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["endcap7"] = this:GetValue();
+						DS_CapTextureUpdate("endcap7");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_endcap8Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="32" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_endcap7Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("End Cap 8");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["endcap8"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["endcap8"] = this:GetValue();
+						DS_CapTextureUpdate("endcap8");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_endcap9Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="32" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_endcap8Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("End Cap 9");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["endcap9"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["endcap9"] = this:GetValue();
+						DS_CapTextureUpdate("endcap9");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_endcap10Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="32" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_endcap9Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("End Cap 10");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["endcap10"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["endcap10"] = this:GetValue();
+						DS_CapTextureUpdate("endcap10");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Button name="DS_Page2TipsButton" inherits="DS_SmallFontButtonTemplate" text="Tips">
+			<Size>
+				<AbsDimension x="54" y="19"/>
+			</Size>
+			<Anchors>
+				<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+					<Offset>
+						<AbsDimension x="-9" y="9"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					PlaySound("igMainMenuContinue");
+					DS_Page2:Hide();
+					DS_Page10:Show();
+				</OnClick>
+			</Scripts>
+		</Button>
+	</Frames>
+</Frame>
+<!-- START page three   -->
+<Frame name="DS_Page3" parent="UIParent" hidden="true" >
+	<Size>
+		<AbsDimension x="512" y="512"/>
+	</Size>
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture file="Interface\AddOns\DiivSkins\Skins\ControlSkins\startup2"/>
+			<FontString inherits="GameFontHighlight" text="Miscellaneous Bits">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-50"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<!--
+			<FontString inherits="GameFontHighlightSmall" text="These are endcaps for the vertical button tray backdrops,">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-70"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString inherits="GameFontHighlightSmall" text="as well as corner 'links' that can be used to join horizontal and vertical trays.">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-85"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			-->
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOP" relativeTo="DS_ControlBackMain" relativePoint="BOTTOM">
+			<Offset>
+				<AbsDimension x="0" y="80"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Frames>
+		<Slider name="DiivSkins_miscbit1Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="30" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOP">
+					<Offset>
+						<AbsDimension x="0" y="-80"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Misc. Bit 1");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["miscbit1"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["miscbit1"] = this:GetValue();
+						DS_BitTextureUpdate("miscbit1");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_miscbit2Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="30" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_miscbit1Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Misc. Bit 2");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["miscbit2"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["miscbit2"] = this:GetValue();
+						DS_BitTextureUpdate("miscbit2");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_miscbit3Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="30" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_miscbit2Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Misc. Bit 3");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["miscbit3"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["miscbit3"] = this:GetValue();
+						DS_BitTextureUpdate("miscbit3");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_miscbit4Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="30" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_miscbit3Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Misc. Bit 4");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["miscbit4"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["miscbit4"] = this:GetValue();
+						DS_BitTextureUpdate("miscbit4");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_miscbit5Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="30" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_miscbit4Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Misc. Bit 5");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["miscbit5"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["miscbit5"] = this:GetValue();
+						DS_BitTextureUpdate("miscbit5");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_miscbit6Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="30" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_miscbit5Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Misc. Bit 6");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["miscbit6"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["miscbit6"] = this:GetValue();
+						DS_BitTextureUpdate("miscbit6");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_miscbit7Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="30" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_miscbit6Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Misc. Bit 7");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["miscbit7"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["miscbit7"] = this:GetValue();
+						DS_BitTextureUpdate("miscbit7");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_miscbit8Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="30" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_miscbit7Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Misc. Bit 8");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["miscbit8"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["miscbit8"] = this:GetValue();
+						DS_BitTextureUpdate("miscbit8");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_miscbit9Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="30" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_miscbit8Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Misc. Bit 9");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["miscbit9"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["miscbit9"] = this:GetValue();
+						DS_BitTextureUpdate("miscbit9");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="DiivSkins_miscbit10Slider" inherits="OptionsSliderTemplate" minValue="0" maxValue="30" defaultValue="0" valueStep="1">
+			<Size>
+				<AbsDimension x="250" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="DiivSkins_miscbit9Slider">
+					<Offset>
+						<AbsDimension x="0" y="-40"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText("Misc. Bit 10");
+					getglobal(this:GetName().."High"):SetText("");
+					getglobal(this:GetName().."Low"):SetText("Hide");
+				</OnLoad>
+				<OnShow>
+					this:SetValue(DiivSkinSettings["miscbit10"]);
+				</OnShow>
+				<OnValueChanged>
+					if DiivSkinSettings then
+						DiivSkinSettings["miscbit10"] = this:GetValue();
+						DS_BitTextureUpdate("miscbit10");
+					end
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Button name="DS_Page3TipsButton" inherits="DS_SmallFontButtonTemplate" text="Tips">
+			<Size>
+				<AbsDimension x="54" y="19"/>
+			</Size>
+			<Anchors>
+				<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+					<Offset>
+						<AbsDimension x="-9" y="9"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					PlaySound("igMainMenuContinue");
+					DS_Page3:Hide();
+					DS_Page10:Show();
+				</OnClick>
+			</Scripts>
+		</Button>
+	</Frames>
+</Frame>
+
+<!-- START page ten   -->
+<!-- waiting on user feedback before expanding or deleting this portion of the AddOn -->
+<Frame name="DS_Page10" parent="UIParent" hidden="true" >
+	<Size>
+		<AbsDimension x="512" y="512"/>
+	</Size>
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture file="Interface\AddOns\DiivSkins\Skins\ControlSkins\startup2"/>
+			<FontString inherits="GameFontHighlight" text="Hints and Tips">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-60"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOP" relativeTo="DS_ControlBackMain" relativePoint="BOTTOM">
+			<Offset>
+				<AbsDimension x="0" y="80"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Frames>
+		<Frame>
+			<Size>
+				<AbsDimension x="256" y="128"/>
+			</Size>
+			<Layers>
+				<Layer level="OVERLAY">
+					<Texture file="Interface\AddOns\DiivSkins\Skins\ControlSkins\construction"/>
+				</Layer>
+			</Layers>
+			<Anchors>
+				<Anchor point="CENTER"/>
+			</Anchors>
+		</Frame>
+		<Button name="DS_Page10TipsButton" inherits="DS_SmallFontButtonTemplate" text="nothing">
+			<Size>
+				<AbsDimension x="54" y="19"/>
+			</Size>
+			<Anchors>
+				<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+					<Offset>
+						<AbsDimension x="-9" y="9"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					PlaySound("igMainMenuContinue");
+					DS_Page10:Hide();
+					DS_MinimizeToggle();
+				</OnClick>
+			</Scripts>
+		</Button>
+	</Frames>
+</Frame>
+
+<!-- START intro page frame -->
+<Frame name="DS_Startup" parent="UIParent" hidden="true">
+	<Size>
+		<AbsDimension x="512" y="512"/>
+	</Size>
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture file="Interface\AddOns\DiivSkins\Skins\ControlSkins\startup"/>
+<!-- START "Intro" text  -->
+<FontString inherits="ItemTextFontNormal" text="Welcome to DiivSkins 2.0!">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-60"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="Thank you for trying out my first Warcraft AddOn,">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-90"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString name="DS_Credits_Line3" inherits="ItemTextFontNormal" text="If you have used DiivSkins before, a lot has changed!">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-108"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="Have a look around, There are a lot of new surprises. :)">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-126"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="To get started, open the MoveAnything! console.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-154"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="Access it with the button above, or from your Main Game Menu.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-172"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="Scroll Down the MoveAnything menu, and look for this heading:">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-190"/></Offset></Anchor></Anchors>
+</FontString>
+<!-- cool insert here :) -->
+<FontString inherits="ItemTextFontNormal" text="If you don't see that, please review the installation instructions,">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-238"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="You are missing an important MoveAnything! file.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-256"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString  inherits="ItemTextFontNormal" text="There are three smaller buttons in the console above.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-284"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="These open slider menu's for the unique DiivSkin screen elements.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-302"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="Use the sliders to configure the appearance of the DiivSkin">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-320"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="components, and use MoveAnything! to move and resize them.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-338"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="In the future, access this console from the main Game Menu.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-356"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="NOTE: When MoveAnything! hides items, they tend to stay">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-384"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="hidden. The [Reload UI] button above will typically resolve">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-402"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="any issues of this sort you may encounter during set-up.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-420"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="Thanks again folks. Have Fun!">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-448"/></Offset></Anchor></Anchors>
+</FontString>
+<!-- END "Intro" text  -->
+
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOP" relativeTo="DS_ControlBackMain" relativePoint="BOTTOM">
+			<Offset>
+				<AbsDimension x="0" y="80"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Frames>
+		<Frame name="$parentBackdrop">
+			<Size>
+				<AbsDimension x="400" y="24"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOP">
+					<Offset>
+						<AbsDimension x="0" y="-210"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+				<EdgeSize>
+					<AbsValue val="12"/>
+				</EdgeSize>
+				<TileSize>
+					<AbsValue val="16"/>
+				</TileSize>
+				<BackgroundInsets>
+					<AbsInset left="2" right="2" top="2" bottom="2"/>
+				</BackgroundInsets>
+			</Backdrop>
+			<Layers>
+				<Layer>
+					<FontString inherits="GameFontNormal" text="**** Diiv's Skins ****                                                        ">
+						<Anchors>
+							<Anchor point="CENTER"/>
+						</Anchors>
+					</FontString>
+				</Layer>
+			</Layers>
+			<Scripts>
+				<OnLoad>
+					this:SetBackdropColor( 0.03, 0.03, 0.03 );
+					this:SetBackdropBorderColor( 0.4, 0.4, 0.4 );
+				</OnLoad>
+			</Scripts>
+		</Frame>
+		<Button name="DS_CreditsButton" inherits="DS_SmallFontButtonTemplate" text="credits">
+			<Size>
+				<AbsDimension x="54" y="19"/>
+			</Size>
+			<Anchors>
+				<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="16" y="9"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					PlaySound("igMainMenuContinue");
+					DS_CreditsPage:Show();
+					DS_Startup:Hide();
+				</OnClick>
+			</Scripts>
+		</Button>
+		<Button name="DS_StartupTipsButton" inherits="DS_SmallFontButtonTemplate" text="Tips">
+			<Size>
+				<AbsDimension x="54" y="19"/>
+			</Size>
+			<Anchors>
+				<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+					<Offset>
+						<AbsDimension x="-9" y="9"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					PlaySound("igMainMenuContinue");
+					DS_Startup:Hide();
+					DS_Page10:Show();
+				</OnClick>
+			</Scripts>
+		</Button>
+	</Frames>
+</Frame>
+
+<!-- START "credits" page  -->
+<Frame name="DS_CreditsPage" parent="UIParent" hidden="true" >
+	<Size>
+		<AbsDimension x="512" y="512"/>
+	</Size>
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture file="Interface\AddOns\DiivSkins\Skins\ControlSkins\startup"/>
+<!-- START "credits" text  -->
+<FontString inherits="ItemTextFontNormal" text="Acknowledgements">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-60"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="Warcraft has a great modding community, and without it,">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-90"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString name="DS_Credits_Line3" inherits="ItemTextFontNormal" text="DiivSkins would be no more than a glimmer in my mind's eye.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-110"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="These are just a few of many that I owe thanks to:">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-130"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="SKRAG for MoveAnything! The all mighty brains behind ">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-160"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="all of this DiivSkins fluff. You da man.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-180"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="DHARGO for FlexBar, what can you say that hasn't been said.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-210"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="thanks for giving all the fluff purpose. You also da man.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-230"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="TELO and SHEID and MONDINGA for all of your AddOns.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-260"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="Your varied works have been most inspirational for me.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-280"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString  inherits="ItemTextFontNormal" text="SAM for SquidMod. I think you were the first to">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-310"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="dig in and get original with the Warcraft Art.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-330"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="I only wish I was even half the artist you are, sir. ">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-350"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="Also thanks to the community at www.WoWINTERFACE.com.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-380"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="BELADONA, GELLO, of course CAIRENN, and the rest of you, ">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-400"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="I extend my most sincere gratitude for your time and assistance. ">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-420"/></Offset></Anchor></Anchors>
+</FontString>
+<FontString inherits="ItemTextFontNormal" text="thank you all. . .diiverr.">
+	<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="-450"/></Offset></Anchor></Anchors>
+</FontString>
+<!-- END "credits" text  -->
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOP" relativeTo="DS_ControlBackMain" relativePoint="BOTTOM">
+			<Offset>
+				<AbsDimension x="0" y="80"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Frames>
+		<Button name="DS_CreditsBackButton" inherits="DS_SmallFontButtonTemplate" text="back">
+			<Size>
+				<AbsDimension x="54" y="19"/>
+			</Size>
+			<Anchors>
+				<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="16" y="9"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					PlaySound("igMainMenuContinue");
+					DS_CreditsPage:Hide();
+					DS_Startup:Show();
+				</OnClick>
+			</Scripts>
+		</Button>
+	</Frames>
+</Frame>
+
+<!-- START Main Game Menu button-->
+<Button name="DS_GameMenuButton" parent = "GameMenuFrame" inherits="GameMenuButtonTemplate" text="DiivSkins">
+	<Scripts>
+		<OnLoad>
+			GameMenu_AddButton( this );
+		</OnLoad>
+		<OnClick>
+			PlaySound("igMainMenuContinue");
+			HideUIPanel(GameMenuFrame);
+			DS_ControlConsole:Show();
+			DS_MinimizeToggle();
+		</OnClick>
+	</Scripts>
+</Button>
+
+</Ui>

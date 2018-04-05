@@ -1,0 +1,9 @@
+## Interface: 1500
+## Title: DiivSkins
+## Notes: "Putting the art back into the World of Warcraft Custom UI." 
+## SavedVariables: DiivSkinSettings
+## RequiredDeps: MoveAnything
+## OptionalDeps: FlexBar
+DiivSkinsFrames.xml
+DiivSkinsControl.xml
+DiivSkinsEggs.xml

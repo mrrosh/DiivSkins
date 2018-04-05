@@ -1,0 +1,95 @@
+<!-- The following tells the xml parser what schema to use - don't change it -->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+
+<!--	The EGGS! 
+
+	I have moved these to their own XML file. You may edit this file at will, without fear of updates from me overwriting your changes. 
+	
+	Remember to backup your "DiivSkinsEggs.xml" file before installing an update, or you will lose any changes / additions you might have made. 
+	I will make no further revisions to this file, so it's all yours. :) --> 
+
+<!-- START Sample Frame and tutorial -->
+<!-- Below is a sample frame you can reference to create your own frame to display an image in game 
+
+	A good place to start is to copy and paste the frame immediately below to just above the </Ui> tag at the end of this file. 
+
+	Next, open the MAPredefinedFrames.lua in MoveAnything, and un-comment the line(s) pertaining to this frame so you can manipulate it.
+
+	Finally, after reloading your UI, you should have a working displayed image in the center of your screen, that you can move, hide, or resize 
+	with an entry toward the bottom of the MoveAnything! scroll list.
+
+	Read through the explanation below, and other XML files, and you are on your way to creating your own in-game images!
+	Good Luck, and have fun! :)
+
+<Frame name="DiivSkins_SampleFrame" frameStrata="BACKGROUND" parent="UIParent">
+	<Size>
+		<AbsDimension x="128" y="128"/>
+	</Size>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture file="Interface\AddOns\DiivSkins\Skins\EggSkins\DiivSkins_SampleTexture"/>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="CENTER">
+			<Offset>
+				<AbsDimension x="0" y="0"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+
+
+
+Explanation of elements:
+This is just what I know of XML through experimentation. I am by no means a professional programmer. If I have made any glaring errors below, 
+please let me know, thank you. 
+
+	The <Frame name="DiivSkins_SampleFrame" is the name you would add to MAPredefinedFrames file to register your frame with MoveAnything!
+		
+		frameStrata="BACKGROUND" denotes what level on your 2 dimensional UI plane the image will be painted on. Other options are:
+			"LOW", "MEDIUM", "HIGH", and "DIALOG". for frameStrata, I recommend "BACKGROUND" to help insure your frame doesn't 
+			interfere with mouse events of other UI panels.
+		
+		parent="UIParent" denotes that frame is a child of the UIParent. This will make your frame respond to Global UI Scaling. If you 
+			don't want this, you can delete the entire reference from the first line of the <Frame>
+	
+	<Size> can be used to scale a texture reference. A "safe" rule of thumb is to use the size, in pixels, of the image file referenced.
+	
+	<Layers> are where you reference your image file. 
+
+		<Layer level="BACKGROUND" is similar to frameStrata, but denotes the level a texture will be displayed in a given strata. If you 
+		want to insure a frame texture is rendered on top of another of your frames, this is the place to do it. Other options are:
+		"ARTWORK" and "OVERLAY". Use "OVERLAY" if you want your image to render on top of elements such as the DiivSkin button trays. 
+	
+	<Texture> is where the actual pathing to your image file. If you think you will want to manipulate this texture from lua at some point,
+		be sure to name the file. EXAMPLE:
+		
+		<Texture name="DiivSkins_SampleTexture" file="etc\etc\etc"/>
+		
+		If you have a "green square" displayed in game, assuming you have a valid texture, this is where your issue probably is. 
+		double check your pathing and your spelling. 
+		
+		For more information and troubleshooting regarding how to display your own images in game, reference this thread here:
+		
+		http://forums.worldofwarcraft.com/thread.aspx?FN=wow-interface-customization&T=139875&P=1
+		
+	<Anchors> denote where your frame will be postitioned relative to its parent. In this example, this is the UIParent, or the whole screen. 
+		This frame will be displayed dead center screen. You may also anchor frames relativeTo="FrameName" and relativePoint="CENTER" to
+		further define where a frame will be postitioned. the x axis is right to left, the y axis is up and down.
+		Look through the other XML files in this download for more examples of anchoring syntax. 
+		
+		If you are having trouble with a frame displaying properly or displaying at all, double check your <Anchors>. 
+		I have found discrepencies here are often the source of issues. -->
+
+<!-- END Sample Frame and tutorial -->
+
+<!-- START custom texture frames -->
+<!-- Below is where can begin adding your own frames. -->
+
+
+</Ui>
+
+

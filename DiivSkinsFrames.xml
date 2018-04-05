@@ -1,0 +1,913 @@
+<!--	DiivSkins v2.0
+	diiverr818@yahoo.com --> 
+
+<!-- The following tells the xml parser what schema to use - don't change it -->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+
+<Script file="DiivSkinsControl.lua"/>
+
+<!-- Horizontal Tray Template  -->
+<Frame name="DiivSkins_hbarTemplate" frameStrata="BACKGROUND" parent="UIParent" virtual="true" >
+	<Size>
+		<AbsDimension x="512" y="41"/>
+	</Size>
+	<Scripts>
+		<OnLoad>
+			this:RegisterEvent("VARIABLES_LOADED");
+		</OnLoad>
+		<OnEvent>
+			DS_TextureOnEvent();
+		</OnEvent>
+	</Scripts>
+</Frame>
+<!-- START Horizontal Trays  -->
+<Frame name="DiivSkins_hbar1" id="1" inherits="DiivSkins_hbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_hbar1Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="0" y="-200"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_hbar2" id="2" inherits="DiivSkins_hbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_hbar2Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="0" y="-250"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_hbar3" id="3" inherits="DiivSkins_hbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_hbar3Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="0" y="-300"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_hbar4" id="4" inherits="DiivSkins_hbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_hbar4Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="0" y="-350"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_hbar5" id="5" inherits="DiivSkins_hbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_hbar5Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="0" y="-400"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_hbar6" id="6" inherits="DiivSkins_hbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_hbar6Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="0" y="-450"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_hbar7" id="7" inherits="DiivSkins_hbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_hbar7Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="0" y="-500"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_hbar8" id="8" inherits="DiivSkins_hbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_hbar8Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="0" y="-550"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_hbar9" id="9" inherits="DiivSkins_hbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_hbar9Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="0" y="-600"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_hbar10" id="10" inherits="DiivSkins_hbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_hbar10Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="0" y="-650"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+
+<!-- Vertical Tray Template  -->
+<Frame name="DiivSkins_vbarTemplate" frameStrata="BACKGROUND" parent="UIParent" virtual="true" >
+	<Size>
+		<AbsDimension x="43" y="512"/>
+	</Size>
+	<Scripts>
+		<OnLoad>
+			this:RegisterEvent("VARIABLES_LOADED");
+		</OnLoad>
+		<OnEvent>
+			DS_VBarTextureOnEvent();
+		</OnEvent>
+	</Scripts>
+</Frame>
+<!-- START Vertical Trays  -->
+<Frame name="DiivSkins_vbar1" id="1" inherits="DiivSkins_vbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_vbar1Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="-450" y="-177"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_vbar2" id="2" inherits="DiivSkins_vbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_vbar2Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="-400" y="-177"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_vbar3" id="3" inherits="DiivSkins_vbarTemplate" parent="UIParent" >
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_vbar3Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="-350" y="-177"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_vbar4" id="4" inherits="DiivSkins_vbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_vbar4Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="-300" y="-177"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_vbar5" id="5" inherits="DiivSkins_vbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_vbar5Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="-250" y="-177"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_vbar6" id="6" inherits="DiivSkins_vbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_vbar6Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="-200" y="-177"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_vbar7" id="7" inherits="DiivSkins_vbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_vbar7Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="-150" y="-177"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_vbar8" id="8" inherits="DiivSkins_vbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_vbar8Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="-100" y="-177"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_vbar9" id="9" inherits="DiivSkins_vbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_vbar9Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="-50" y="-177"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_vbar10" id="10" inherits="DiivSkins_vbarTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="DiivSkins_vbar10Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_00">
+				<TexCoords left="0.5" right="0.6" top="0.9" bottom="1.0"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="0" y="-177"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+
+<!-- End Cap Template  -->
+<Frame name="DiivSkins_endcapTemplate" frameStrata="BACKGROUND" parent="UIParent" virtual="true" >
+	<Size>
+		<AbsDimension x="128" y="128"/>
+	</Size>
+	<Scripts>
+		<OnLoad>
+			this:RegisterEvent("VARIABLES_LOADED");
+		</OnLoad>
+		<OnEvent>
+			DS_CapTextureOnEvent();
+		</OnEvent>
+	</Scripts>
+</Frame>
+<!-- START End Caps -->
+<Frame name="DiivSkins_endcap1" id="1" inherits="DiivSkins_endcapTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_endcap1Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_01">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="0" y="150"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_endcap2" id="2" inherits="DiivSkins_endcapTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_endcap2Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_01">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="100" y="150"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_endcap3" id="3" inherits="DiivSkins_endcapTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_endcap3Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_01">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="200" y="150"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_endcap4" id="4" inherits="DiivSkins_endcapTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_endcap4Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_01">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="300" y="150"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_endcap5" id="5" inherits="DiivSkins_endcapTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_endcap5Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_01">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="400" y="150"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_endcap6" id="6" inherits="DiivSkins_endcapTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_endcap6Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_01">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="500" y="150"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_endcap7" id="7" inherits="DiivSkins_endcapTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_endcap7Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_01">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="600" y="150"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_endcap8" id="8" inherits="DiivSkins_endcapTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_endcap8Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_01">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="700" y="150"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_endcap9" id="9" inherits="DiivSkins_endcapTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_endcap9Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_01">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="800" y="150"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_endcap10" id="10" inherits="DiivSkins_endcapTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_endcap10Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_01">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="900" y="150"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+
+<!-- Miscellaneous Bits Template  -->
+<Frame name="DiivSkins_miscbitTemplate" frameStrata="BACKGROUND" parent="UIParent" virtual="true" >
+	<Size>
+		<AbsDimension x="128" y="128"/>
+	</Size>
+	<Scripts>
+		<OnLoad>
+			this:RegisterEvent("VARIABLES_LOADED");
+		</OnLoad>
+		<OnEvent>
+			DS_BitTextureOnEvent();
+		</OnEvent>
+	</Scripts>
+</Frame>
+<!-- START Miscellaneous Bits -->
+<Frame name="DiivSkins_miscbit1" id="1" inherits="DiivSkins_miscbitTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_miscbit1Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_02">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="0" y="250"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_miscbit2" id="2" inherits="DiivSkins_miscbitTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_miscbit2Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_02">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="100" y="250"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_miscbit3" id="3" inherits="DiivSkins_miscbitTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_miscbit3Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_02">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="200" y="250"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_miscbit4" id="4" inherits="DiivSkins_miscbitTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_miscbit4Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_02">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="300" y="250"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_miscbit5" id="5" inherits="DiivSkins_miscbitTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_miscbit5Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_02">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="400" y="250"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_miscbit6" id="6" inherits="DiivSkins_miscbitTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_miscbit6Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_02">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="500" y="250"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_miscbit7" id="7" inherits="DiivSkins_miscbitTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_miscbit7Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_02">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="600" y="250"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_miscbit8" id="8" inherits="DiivSkins_miscbitTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_miscbit8Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_02">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="700" y="250"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_miscbit9" id="9" inherits="DiivSkins_miscbitTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_miscbit9Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_02">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="800" y="250"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+<Frame name="DiivSkins_miscbit10" id="10" inherits="DiivSkins_miscbitTemplate" parent="UIParent">
+	<Layers>
+		<Layer level="OVERLAY">
+			<Texture name="DiivSkins_miscbit10Texture" file="Interface\AddOns\DiivSkins\Skins\diivskins_02">
+				<TexCoords left="0.75" right="0.8" top="0.75" bottom="0.8"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="900" y="250"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+
+<!--  	START Skins for MoveAnything!'s separated MainBar elements
+	These elements are parented to the Frame they skin, 
+	so are only visible when that frame is present -->
+
+<!--  START HORIZONTAL skin for MoveAnything's Action Bar  -->
+		<Frame name="DS_actionbar" frameStrata="BACKGROUND" parent="BasicActionButtonsMover">
+			<Size>
+				<AbsDimension x="512" y="46"/>
+			</Size>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture name="$parentFrame" file="Interface\AddOns\DiivSkins\Skins\diivskins_MA01">
+						<TexCoords left="0.0" right="1.0" top="0.75" bottom="0.8398437"/>
+					</Texture>
+				</Layer>
+			</Layers>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="BasicActionButtonsMover" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="-18" y="7"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Frame>
+
+<!--  START VERTICAL skin for MoveAnything's Action Bar  -->
+		<Frame name="DS_actionbar_V" frameStrata="BACKGROUND" parent="BasicActionButtonsVerticalMover">
+			<Size>
+				<AbsDimension x="50" y="512"/>
+			</Size>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture name="$parentFrame" file="Interface\AddOns\DiivSkins\Skins\diivskins_MA02">
+						<TexCoords left="0.0" right="0.1953125" top="0.0" bottom="1.0"/>
+					</Texture>
+				</Layer>
+			</Layers>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="BasicActionButtonsVerticalMover" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="-8" y="17"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Frame>	
+
+<!-- START Experience Bar -->
+		<Frame name="DS_expbar" parent="MainMenuExpBar">
+			<Size>
+				<AbsDimension x="512" y="15"/>
+			</Size>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture name="$parentFrame" file="Interface\AddOns\DiivSkins\Skins\diivskins_MA01">
+						<TexCoords left="0.0" right="1.0" top="0.625" bottom="0.6542968"/>
+					</Texture>
+				</Layer>
+			</Layers>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MainMenuExpBar" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="-18" y="1"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					--Remove default XPbar overlay,create short XP Bar
+					--If anyone knows a way to make the new XP Bar overlay
+					--skin re-size along with its statusbar parent, please let me know.
+					MainMenuExpBar:SetWidth(468);
+					MainMenuBarTexture0:SetTexture("Interface\\AddOns\\DiivSkins\\Skins\\diivskins_MA01");
+					MainMenuBarTexture0:SetTexCoord(0.5, 1.0, 0.3964843, 0.5);
+					MainMenuBarTexture1:SetTexture("Interface\\AddOns\\DiivSkins\\Skins\\diivskins_MA01");
+					MainMenuBarTexture1:SetTexCoord(0.5, 1.0, 0.2714843, 0.375);
+					MainMenuBarTexture2:SetTexture("Interface\\AddOns\\DiivSkins\\Skins\\diivskins_MA01");
+					MainMenuBarTexture2:SetTexCoord(0.5, 1.0, 0.1464843, 0.25);
+					MainMenuBarTexture3:SetTexture("Interface\\AddOns\\DiivSkins\\Skins\\diivskins_MA01");
+					MainMenuBarTexture3:SetTexCoord(0.5, 1.0, 0.0214843, 0.125);
+				</OnLoad>
+			</Scripts>
+		</Frame>
+
+<!-- START Performance Bar Skin (lag meter) -->
+		<Frame name="DS_performancebar" parent="MainMenuBarPerformanceBarFrame">
+			<Size>
+				<AbsDimension x="38" y="46"/>
+			</Size>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture name="$parentFrame" file="Interface\AddOns\DiivSkins\Skins\diivskins_MA01">
+						<TexCoords left="0.0" right="0.0742187" top="0.25" bottom="0.3398437"/>
+					</Texture>
+				</Layer>
+			</Layers>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MainMenuBarPerformanceBarFrame" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="-13" y="-10"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Frame>
+
+<!-- START skins for MoveAnything!'s Bag Buttons modules  -->
+<!-- START HORIZONTAL bag button display -->
+		<Frame name="DS_bagbuttons" frameStrata="BACKGROUND" parent="BagButtonsMover">
+			<Size>
+				<AbsDimension x="230" y="50"/>
+			</Size>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture file="Interface\AddOns\DiivSkins\Skins\diivskins_MA01">
+						<TexCoords left="0.0" right="0.4492187" top="0.0" bottom="0.0976562"/>
+					</Texture>
+				</Layer>
+			</Layers>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="BagButtonsMover" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="-3" y="8"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Frame>
+
+<!-- START VERTICAL bag button display -->
+		<Frame name="DS_bagbuttons_V" frameStrata="BACKGROUND" parent="BagButtonsVerticalMover">
+			<Size>
+				<AbsDimension x="64" y="256"/>
+			</Size>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture file="Interface\AddOns\DiivSkins\Skins\diivskins_MA02">
+						<TexCoords left="0.5" right="0.75" top="0.0" bottom="0.5"/>
+					</Texture>
+				</Layer>
+			</Layers>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="BagButtonsVerticalMover" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="-8" y="28"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Frame>
+
+<!-- START skins for MoveAnything!'s Micro Button Menu modules -->
+<!-- START HORIZONTAL micromenu button display -->
+		<Frame name="DS_microbuttons" frameStrata="BACKGROUND" parent="MicroButtonsMover">
+			<Size>
+				<AbsDimension x="223" y="50"/>
+			</Size>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture name="$parentFrame" file="Interface\AddOns\DiivSkins\Skins\diivskins_MA01">
+						<TexCoords left="0.0" right="0.4492187" top="0.125" bottom="0.2226562"/>
+					</Texture>
+				</Layer>
+			</Layers>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MicroButtonsMover" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="-5" y="10"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Frame>
+
+<!-- START VERTICAL micromenu button display -->
+		<Frame name="DS_microbuttons_V" frameStrata="BACKGROUND" parent="MicroButtonsVerticalMover">
+			<Size>
+				<AbsDimension x="40" y="288"/>
+			</Size>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture name="$parentFrame" file="Interface\AddOns\DiivSkins\Skins\diivskins_MA02">
+						<TexCoords left="0.25" right="0.40625" top="0.0" bottom="0.5625"/>
+					</Texture>
+				</Layer>
+			</Layers>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MicroButtonsVerticalMover" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="-5" y="8"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Frame>
+
+<!--	The EGGS! 	
+	I have moved these to their own XML file. You may edit the DiivSkinsEggs.xml file at will, 
+	without fear of updates to this primary file overwriting your changes to the "eggs" file. 
+	
+	Remember to backup your "DiivSkinsEggs.xml" file before installing an update,
+	or you will lose any changes / additions you might have made. 
+	I will make no further revisions to that file, so it's all yours. :) --> 
+
+</Ui>
